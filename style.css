@@ -1,0 +1,274 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(243, 243, 243);
+  font-family: "Poppins", sans-serif;
+  color: rgba(0, 0, 0, 0.641);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 4rem;
+  align-items: center;
+  font-size: 1.3rem;
+}
+.header img {
+  height: 7vh;
+  margin: 1rem 0;
+  cursor: pointer;
+}
+.header__logInputs {
+  width: 20%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.header__logInputs input {
+  border: 1px solid rgba(0, 0, 0, 0.039);
+  outline: none;
+  width: 40%;
+  height: 5vh;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 1rem;
+}
+.header__logInputs button {
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: rgb(243, 243, 243);
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.main {
+  width: 65%;
+  height: 90vh;
+  margin-inline: auto;
+  margin-top: 3rem;
+  display: grid;
+  grid-template-areas: "info info amount  amount" "transactions transactions transactions  process" "summary . sort timmer";
+}
+.main__infoAndDate {
+  grid-area: info;
+}
+.main__currentBalance {
+  grid-area: amount;
+  justify-self: end;
+  font-weight: lighter;
+  font-size: 3rem;
+  color: rgba(0, 0, 0, 0.686);
+}
+.main__currentBalance::after {
+  content: " $";
+}
+.main__transactions {
+  grid-area: transactions;
+  width: 100%;
+  overflow: scroll;
+  height: 70vh;
+  border-radius: 10px;
+}
+.main .transaction-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.main__process {
+  grid-area: process;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.main__process--process {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  height: 21vh;
+  border-radius: 10px;
+}
+.main__process--process input {
+  height: 4vh;
+  border: none;
+  width: 40%;
+  border-radius: 5px;
+  outline: none;
+  text-align: center;
+}
+.main__process--process input::-moz-placeholder {
+  text-align: center;
+}
+.main__process--process input::placeholder {
+  text-align: center;
+}
+.main__process--process input:focus {
+  background-color: rgba(255, 255, 255, 0.573);
+}
+.main__process--process button {
+  background-color: white;
+  width: 15%;
+  height: 4vh;
+  outline: none;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+}
+.main__process--process button:hover {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.352);
+}
+.main__process--process h4 {
+  font-size: 1.1rem;
+  margin-left: 2.4rem;
+}
+.main__process--process .inputs {
+  display: flex;
+  justify-content: space-around;
+  margin-left: 2.4rem;
+  margin-top: 1rem;
+}
+.main__process--process .info {
+  width: 100%;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  align-self: center;
+}
+.main__process--process .info span {
+  width: 50%;
+}
+.main__process--process .info #secondSpan {
+  text-align: left;
+  padding-left: 2.3rem;
+}
+.main__process--request input {
+  width: 65%;
+}
+.main__process--request button {
+  width: 25%;
+}
+.main__process--request .info {
+  display: block;
+  width: 55%;
+  text-align: center;
+  align-self: start;
+}
+.main__process--request .inputs {
+  justify-content: space-between;
+  width: 60%;
+}
+.main__process--transfer {
+  background-image: linear-gradient(to bottom right, rgb(255, 202, 3), rgb(255, 178, 3));
+}
+.main__process--transfer input {
+  background-color: rgb(255, 217, 107);
+}
+.main__process--request {
+  background-image: linear-gradient(to bottom right, rgb(151, 223, 94), rgb(61, 181, 131));
+}
+.main__process--request input {
+  background-color: rgb(171, 226, 167);
+}
+.main__process--close {
+  background-image: linear-gradient(to bottom right, rgb(253, 84, 95), rgb(231, 46, 90));
+}
+.main__process--close input {
+  background-color: rgb(249, 145, 158);
+}
+.main__process--close .info #secondSpan {
+  padding-left: 1rem;
+}
+.main__summary {
+  grid-area: summary;
+  font-weight: bold;
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+}
+.main__summary div {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.main__summary span {
+  font-weight: normal;
+  font-size: 1.5rem;
+}
+.main__summary span#in {
+  color: rgb(102, 200, 115);
+}
+.main__summary span#out {
+  color: rgb(245, 75, 97);
+}
+.main__sort {
+  grid-area: sort;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+.main__sort button {
+  border: none;
+  outline: none;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.main__timer {
+  grid-area: timmer;
+  justify-self: right;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 0.8rem;
+  width: 45%;
+}
+.main__timer #time {
+  font-weight: bold;
+}
+
+.invalidInput {
+  border: 2px solid red !important;
+}
+
+.disableButton {
+  pointer-events: none;
+}
+
+.transaction-row {
+  height: 10vh;
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.108);
+  background-color: white;
+}
+.transaction-row #info {
+  width: 40%;
+  font-size: 0.7rem;
+  display: flex;
+  justify-content: space-between;
+}
+.transaction-row #totalTransactions {
+  background-color: rgba(73, 99, 73, 0.518);
+  border-radius: 10px;
+  padding: 0rem 1em;
+  color: white;
+}
+
+.DEPOSIT {
+  background-image: linear-gradient(to bottom right, rgb(151, 223, 94), rgb(61, 181, 131));
+}
+
+.WITHDRAWL {
+  background-image: linear-gradient(to bottom right, rgb(253, 84, 95), rgb(231, 46, 90));
+}/*# sourceMappingURL=style.css.map */

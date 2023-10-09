@@ -1,0 +1,388 @@
+  @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+body
+{
+    background-color:rgb(243,243,243);
+    font-family: "Poppins", sans-serif;
+    color:rgba(0, 0, 0, 0.641);
+
+}
+
+.header
+{   
+    display: flex;
+    justify-content: space-between;
+    padding-inline:4rem;
+    align-items:center;
+    font-size:1.3rem;
+    & img
+    {
+        height: 7vh;
+        margin:1rem 0;
+        cursor: pointer;
+    }
+    
+    &__logInputs
+    {
+        width:20%;
+        display:flex;
+        justify-content: space-around;
+        align-items: center;
+
+        input
+        {
+            border:1px solid rgba(0, 0, 0, 0.039);
+            outline: none;
+            width: 40%;
+            height:5vh;
+            border-radius: 50px;
+            text-align: center;  
+            font-size: 1rem;
+        }
+
+        button
+        {
+
+            width:fit-content;
+            background-color:rgb(243,243,243) ;
+            border:none;
+            font-size:1.5rem;
+            cursor: pointer;
+        }
+        
+    }
+}
+
+.main
+{
+    width:65%;
+    height: 90vh;
+    margin-inline:auto;
+    margin-top:3rem;
+    display:grid;
+    grid-template-areas: "info info amount  amount"
+                        "transactions transactions transactions  process"
+                        "summary . sort timmer";
+
+
+    &__infoAndDate
+    {
+        grid-area:info;
+    }
+
+    &__currentBalance
+    {
+        grid-area:amount;
+        justify-self: end;
+        font-weight: lighter;
+        font-size:3rem;
+        color:rgba(0, 0, 0, 0.686);
+    
+        &::after
+        {
+            content:" $";
+        }
+    }
+
+
+    &__transactions
+    {
+        grid-area:transactions;
+        width:100%;
+        overflow: scroll;
+        height:70vh;
+        border-radius: 10px;
+
+       
+    }
+
+    .transaction-row
+    {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    &__process
+    {
+        grid-area:process;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        &--process
+        {
+            width:90%;
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: start;
+            height:21vh;
+            border-radius:10px;
+            & input
+            {
+                height:4vh;
+                border:none;
+                width:40%;
+                border-radius: 5px;
+                outline:none;
+                text-align: center;
+
+                &::placeholder
+                {
+                  text-align: center;
+                }  
+
+            }
+
+            & input:focus
+            {
+                background-color: rgba(255, 255, 255, 0.573);
+            }
+            
+            & button
+            {
+                background-color: white;
+                width:15%;
+                height:4vh;
+                outline:none;
+                border: none;
+                border-radius: 7px;
+                cursor: pointer;
+            }
+            & button:hover
+            {
+                color:white;
+                background-color: rgba(0, 0, 0, 0.352);;
+            }
+            & h4
+            {
+                font-size:1.1rem;
+                margin-left:2.4rem;
+
+            }
+
+            & .inputs
+            {
+                display: flex;
+                justify-content: space-around;
+                margin-left:2.4rem;
+                margin-top: 1rem;
+
+               
+            }
+            & .info
+            {
+
+                width:100%;
+                font-size:0.8rem;
+                margin-top:0.5rem;
+                display: flex;
+                justify-content: space-around;
+                text-align: center;
+                align-self: center;
+                span
+                {   
+                    width:50%;
+
+                }
+
+                #secondSpan
+                {
+                    text-align: left;
+                    padding-left:2.3rem;
+                }
+
+            }
+
+           
+         
+
+        }
+        
+        &--request
+        {
+            & input
+            {
+                width:65%;
+            }
+            
+            & button
+            {
+                width:25%;
+            }
+
+            & .info
+            {
+                display:block;
+                width:55%;
+                text-align: center;
+                align-self: start;
+            }
+            & .inputs
+            {
+                justify-content: space-between;
+                width:60%;
+            }
+        }
+
+
+        &--transfer
+        {
+            background-image: linear-gradient(to bottom right, rgb(255,202,3), rgb(255,178,3));
+
+            & input
+            {
+                background-color: rgb(255,217,107);
+            }
+
+           
+        }
+
+        &--request
+        {
+            background-image: linear-gradient(to bottom right, rgb(151,223,94),rgb(61,181,131));
+
+            & input
+            {
+                background-color: rgb(171,226,167);
+            }
+        }
+        &--close
+        {
+            background-image: linear-gradient(to bottom right, rgb(253,84,95),rgb(231,46,90));
+
+            & input
+            {
+                background-color: rgb(249,145,158);
+            }
+
+           .info #secondSpan
+            {
+                padding-left:1rem;
+            }
+        }
+    }
+
+
+    &__summary
+    {
+        grid-area:summary;
+        font-weight: bold;
+        font-size: 0.8rem;
+        display: flex;
+        justify-content: space-around;
+        align-items: baseline;
+        & div
+        {
+            display: flex;
+            justify-content: space-around;
+            align-items: baseline;
+            width:fit-content;
+        }
+        & span
+        {
+            font-weight: normal;
+            font-size: 1.5rem;
+        }
+
+        
+        
+        & span#in
+        {
+            color:rgb(102,200,115);
+
+        }
+        & span#out
+        {
+            color:rgb(245,75,97);
+        }
+    }
+
+    &__sort
+    {
+        grid-area:sort;
+        display: flex;
+        justify-content: right;
+        align-items: center;    
+        
+        & button
+        {
+            border: none;
+            outline: none;
+            font-size:0.8rem;
+            cursor: pointer;
+        }
+    }
+
+    &__timer
+    {
+        grid-area:timmer;
+        justify-self: right;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-size:0.8rem;
+        width:45%;
+       
+        & #time
+        {
+            font-weight: bold;
+        }
+
+    }
+   
+
+    
+}
+
+.invalidInput
+{
+    border:2px solid red !important;
+}
+
+.disableButton
+{
+    pointer-events: none;
+
+}
+
+.transaction-row
+{
+    height:10vh;
+    border-bottom: 1.5px solid rgba(0, 0, 0, 0.108);
+    background-color:white;
+    & #info
+    {
+        width:40%;
+        font-size: 0.7rem;
+        display: flex;
+        justify-content: space-between;
+    }
+    & #totalTransactions
+    {
+        background-color: rgba(73, 99, 73, 0.518);
+        border-radius: 10px;
+        padding:0rem 1em;
+        color:white;
+    }
+}
+
+
+
+.DEPOSIT
+{
+    background-image: linear-gradient(to bottom right, rgb(151,223,94),rgb(61,181,131));
+    
+}
+
+.WITHDRAWL
+{
+    background-image: linear-gradient(to bottom right, rgb(253,84,95),rgb(231,46,90));
+
+}

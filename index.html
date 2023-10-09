@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banker</title>
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+    
+</head>
+<body>
+    <header class="header">
+        <h4 id="header__Info">Log in to get started</h4>
+        <img alt="logo" src="images/logo.png">
+        <div class="header__logInputs">
+            <input type="text" placeholder="user" name="userName" id="user"/>
+            <input type="password" placeholder="PIN" name="pin" id="pin"/> 
+            <button type="submit" id="submit" >&rarr;</button>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="main__infoAndDate">
+            <h2>Current Balance</h2>
+            <p></p>
+        </div>
+
+        <div class="main__currentBalance">
+        
+        </div>
+
+        <div class="main__transactions">
+
+        </div>
+
+        <div class="main__process">
+            <div class="main__process--transfer main__process--process">
+                <h4 class="main__process--element">Transfer money</h4>
+                <div class="inputs main__process--element">
+                    <input type="text" class="text" placeholder="user" >
+                    <input type="text" class="number" placeholder="0.0">
+                    <button type="button">&rarr;</button>
+                </div>
+                <div class="info main__process--element">
+                    <span id="firstSpan">Transfer to</span>
+                    <span id="secondSpan">Amount</span>
+                </div>
+            </div>
+            <div class="main__process--request main__process--process">
+                <h4 class="main__process--element">Request Loan</h4>
+                <div class="inputs main__process--element">
+                    <input type="text" class="number" placeholder="0.0" >
+                    <button type="button">&rarr;</button>
+                </div>
+                <span class="info main__process--element">Amount</span>
+                
+            </div>
+            <div class="main__process--close main__process--process">
+                <h4 class="main__process--element">Close account </h4>
+                <div class="inputs main__process--element">
+                    <input type="text" class="text" placeholder="user">
+                    <input type="password" class="number" placeholder="PIN">
+                    <button type="button">&rarr;</button>
+                </div>
+                <div class="info main__process--element">
+                    <span id="firstSpan">Confirm user</span>
+                    <span id="secondSpan">Confirm pin</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="main__summary">
+            <div class="inContainer">
+                IN<span id="in"></span>
+            </div>
+            <div class="outContainer">
+                OUT<span id="out"></span>
+            </div>
+        </div>
+        
+        <div class="main__sort">
+            <button type="button">&darr;SORT</button>
+        </div>
+
+        <div class="main__timer">
+            <div id="message">You will be logged out in</div>
+            <div id="time"></div>
+        </div>
+    </main>
+    <script src="singleScript.js"></script>
+
+
+</body>
+</html>
