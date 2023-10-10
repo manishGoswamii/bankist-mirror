@@ -6,11 +6,59 @@
     box-sizing: border-box;
 }
 
+html
+{
+    height:100%;
+}
 body
 {
     background-color:rgb(243,243,243);
     font-family: "Poppins", sans-serif;
     color:rgba(0, 0, 0, 0.641);
+    height:100%;
+
+}
+
+//spans used as buttons
+div.menuButton
+{
+
+    width:15vw;
+    flex-direction: column;
+    justify-content: space-around;
+    height:5vh;
+    position: fixed;
+    top:5%;
+    left:5%;
+    z-index:10;
+
+    span
+    {   
+        display: block;
+        width:100%;
+        background-color: black;
+        height: 1vh;
+
+    }
+
+    display: none;
+
+    @media (max-width:40rem)
+    {
+        display: flex;
+    }
+}
+
+div.dropLayer
+{
+    width:100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.165);
+    position: fixed;
+    z-index:2;
+    display: none;
+    top:0;
+    left: 0;
 
 }
 
@@ -26,6 +74,11 @@ body
         height: 7vh;
         margin:1rem 0;
         cursor: pointer;
+
+        @media (max-width:40rem)
+        {
+            display: none;
+        }
     }
     
     &__logInputs
@@ -34,6 +87,13 @@ body
         display:flex;
         justify-content: space-around;
         align-items: center;
+        @media (max-width:40rem)
+        {
+            flex-direction: column;
+            height:30%;
+            width:100%;
+            justify-content: space-around;
+        }
 
         input
         {
@@ -44,6 +104,12 @@ body
             border-radius: 50px;
             text-align: center;  
             font-size: 1rem;
+
+            @media (max-width:40rem)
+            {
+                height:20%;
+                width:60%;
+            }
         }
 
         button
@@ -54,9 +120,46 @@ body
             border:none;
             font-size:1.5rem;
             cursor: pointer;
+
+            @media (max-width:40rem)
+            {
+               font-size: 1.3rem;
+               padding:0.2rem 0.5rem;
+               border-radius: 10px;
+               width:30%;
+            }
         }
         
     }
+
+    h4
+    {
+        @media (max-width:40rem)
+        {
+            width:100%;
+            text-align:center;
+            color:rgba(0, 0, 0, 0.67);
+        }
+    }
+    @media (max-width:40rem)
+    {
+        // visibility: hidden;
+        display: none;
+        flex-direction: column;
+        background-color: rgba(255, 255, 255, 0.885);
+        height:70%;
+        width:80%;
+        justify-content: center;
+        font-size: 1.5rem;
+        padding-inline: 1rem;
+        position: relative;
+        z-index:5;
+        position:fixed;
+        top:0;
+        left: 0;
+    }
+
+   
 }
 
 .main
@@ -74,6 +177,20 @@ body
     &__infoAndDate
     {
         grid-area:info;
+
+        @media(max-width:40rem)
+        {
+            margin:0.5rem 0rem;
+
+        }
+
+        h2
+        {
+            @media(max-width:40rem)
+            {
+                font-size: 1rem;
+            }
+        }
     }
 
     &__currentBalance
@@ -88,6 +205,11 @@ body
         {
             content:" $";
         }
+
+        @media(max-width:40rem)
+        {
+            font-size: 1.5rem;
+        }
     }
 
 
@@ -99,6 +221,10 @@ body
         height:70vh;
         border-radius: 10px;
 
+        @media (max-width:40rem)
+        {
+            margin: 1rem 0rem;    
+        }
        
     }
 
@@ -107,6 +233,7 @@ body
         display: flex;
         justify-content: space-around;
         align-items: center;
+
     }
     &__process
     {
@@ -115,6 +242,12 @@ body
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
+        height:70vh;
+        margin:1rem 0rem;
+        @media(max-width:40rem)
+        {
+            justify-content: space-around;
+        }
         &--process
         {
             width:90%;
@@ -124,6 +257,12 @@ body
             align-items: start;
             height:21vh;
             border-radius:10px;
+
+            @media(max-width:40rem)
+            {
+                height:20vh;
+                width:100%;
+            }
             & input
             {
                 height:4vh;
@@ -310,13 +449,17 @@ body
         display: flex;
         justify-content: right;
         align-items: center;    
-        
+        @media(max-width:40rem)
+        {
+            justify-content: center;
+        }
         & button
         {
             border: none;
             outline: none;
             font-size:0.8rem;
             cursor: pointer;
+
         }
     }
 
@@ -330,6 +473,13 @@ body
         font-size:0.8rem;
         width:45%;
        
+        @media(max-width:40rem)
+        {   
+            margin:1rem 0rem;
+            justify-self: center;
+            width:110%;
+            justify-content: space-around;
+        }
         & #time
         {
             font-weight: bold;
@@ -337,7 +487,22 @@ body
 
     }
    
+    @media(max-width:40rem)
+    {
+        width:100%;
+        padding:1rem 2rem;
+        height: auto;
 
+        // grid-template-areas: "info info amount  amount"
+        // "transactions transactions transactions  process"
+        // "summary . sort timmer";
+
+        grid-template-areas: "info amount"
+        "process process"
+        "transactions  transactions"
+        "summary summary"
+        "sort timmer";
+    }
     
 }
 
@@ -357,12 +522,22 @@ body
     height:10vh;
     border-bottom: 1.5px solid rgba(0, 0, 0, 0.108);
     background-color:white;
+    
+    @media(max-width:40rem)
+    {
+        
+    }
     & #info
     {
         width:40%;
         font-size: 0.7rem;
         display: flex;
         justify-content: space-between;
+
+        @media(max-width:40rem)
+        {
+            width:50%;
+        }
     }
     & #totalTransactions
     {

@@ -150,6 +150,9 @@ function noUserFound(user)
         outAmount.textContent = (-1 * outValue) + " $";
 
         startCountDown();
+
+        // Code for responsiveness, as to hide the menu after authentication is successful.
+        
     }
 
 }
@@ -527,3 +530,32 @@ function startCountDown()
     },1000);
 }
 
+
+// Script for responsiveness
+
+const menuButton  = document.querySelector(".menuButton");
+const dropLayer =  document.querySelector(".dropLayer"); 
+const header  = document.querySelector(".header");
+
+menuButton.addEventListener("click",function()
+{   
+    if(dropLayer.style.display === "block")
+    {
+        dropLayer.style.display = "none";
+        header.style.display = "none";
+    }
+    else
+    {
+        dropLayer.style.display = "block";
+        header.style.display = "flex";
+    }
+    
+});
+
+
+dropLayer.addEventListener("click",function()
+{   
+    dropLayer.style.display = "none";
+    header.style.display = "none";
+    
+});
