@@ -432,39 +432,35 @@ processButtons[1].addEventListener("click",function()
 });
 
 //close account
+//deleting the currently logged in user 
 processButtons[2].addEventListener("click",function()
 {
+
     let userFromTextField = textFields[1].value;
     let passwordFromTextField = +numericFields[2].value;
-
-
-    for(let user of users)
-    {
-        if(user.userName===userFromTextField)
+    
+    if(currUser.userName===userFromTextField)
         {
-            if(user.password===passwordFromTextField)
+            if(currUser.password===passwordFromTextField)
             {
-                users.splice(users.indexOf(user));
-                alert(`User ${user.userName} deleted successfully.`);
+                users.splice(users.indexOf(currUser),1);
+                alert(`User ${currUser.userName} deleted successfully.`);
                 textFields[1].value="";
                 numericFields[2].value="";
                 disableButton(processButtons[2]);
-                console.log(users);
-              
+                main.style.opacity=0;
+                document.querySelector(".header h4").textContent="Log in to get started";
             }
             else
             {
-                alert(`Password does not match for ${user.userName}.`)
+                alert(`Password does not match for ${currUser.userName}.`)
             }
             
             return;
 
         }
-        
-    }
 
-
-    alert(`user ${textFields[1].value} does not exists.`);
+    alert(`user name does not match.`);
 });
 
 
