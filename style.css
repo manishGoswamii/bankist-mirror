@@ -145,15 +145,32 @@ div.dropLayer {
   display: grid;
   grid-template-areas: "info info amount  amount" "transactions transactions transactions  process" "summary . sort timmer";
 }
+@media (max-width: 62.5rem) {
+  .main {
+    width: 90%;
+  }
+}
+@media (max-width: 40rem) {
+  .main {
+    grid-template-areas: " info amount" "process process" "transactions  transactions" "summary summary " "sort timmer";
+    width: 70%;
+  }
+}
+@media (max-width: 28rem) {
+  .main {
+    width: 90%;
+  }
+}
 .main__infoAndDate {
   grid-area: info;
 }
 @media (max-width: 40rem) {
   .main__infoAndDate {
-    margin: 0.5rem 0rem;
+    margin: 2rem 0rem;
+    width: 150%;
   }
 }
-@media (max-width: 40rem) {
+@media (max-width: 48.5625rem) {
   .main__infoAndDate h2 {
     font-size: 1rem;
   }
@@ -168,6 +185,11 @@ div.dropLayer {
 .main__currentBalance::after {
   content: " $";
 }
+@media (max-width: 48.5625rem) {
+  .main__currentBalance {
+    font-size: 2rem;
+  }
+}
 @media (max-width: 40rem) {
   .main__currentBalance {
     font-size: 1.5rem;
@@ -179,11 +201,7 @@ div.dropLayer {
   overflow: scroll;
   height: 70vh;
   border-radius: 10px;
-}
-@media (max-width: 40rem) {
-  .main__transactions {
-    margin: 1rem 0rem;
-  }
+  padding-top: 2rem;
 }
 .main .transaction-row {
   display: flex;
@@ -197,25 +215,24 @@ div.dropLayer {
   justify-content: space-around;
   align-items: center;
   height: 70vh;
-  margin: 1rem 0rem;
 }
 @media (max-width: 40rem) {
   .main__process {
-    justify-content: space-around;
+    margin-top: 2rem;
   }
 }
 .main__process--process {
   width: 90%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: start;
+  justify-content: space-around;
+  align-items: center;
   height: 21vh;
   border-radius: 10px;
+  padding: 1.5rem;
 }
 @media (max-width: 40rem) {
   .main__process--process {
-    height: 20vh;
     width: 100%;
   }
 }
@@ -251,18 +268,15 @@ div.dropLayer {
 }
 .main__process--process h4 {
   font-size: 1.1rem;
-  margin-left: 2.4rem;
+  width: 85%;
 }
 .main__process--process .inputs {
   display: flex;
   justify-content: space-around;
-  margin-left: 2.4rem;
-  margin-top: 1rem;
 }
 .main__process--process .info {
   width: 100%;
   font-size: 0.8rem;
-  margin-top: 0.5rem;
   display: flex;
   justify-content: space-around;
   text-align: center;
@@ -273,23 +287,14 @@ div.dropLayer {
 }
 .main__process--process .info #secondSpan {
   text-align: left;
-  padding-left: 2.3rem;
-}
-.main__process--request input {
-  width: 65%;
-}
-.main__process--request button {
-  width: 25%;
 }
 .main__process--request .info {
-  display: block;
-  width: 55%;
-  text-align: center;
-  align-self: start;
+  width: 60%;
+  align-self: flex-start;
 }
 .main__process--request .inputs {
-  justify-content: space-between;
-  width: 60%;
+  width: 100%;
+  justify-content: space-around;
 }
 .main__process--transfer {
   background-image: linear-gradient(to bottom right, rgb(255, 202, 3), rgb(255, 178, 3));
@@ -320,6 +325,12 @@ div.dropLayer {
   justify-content: space-around;
   align-items: baseline;
 }
+@media (max-width: 40rem) {
+  .main__summary {
+    margin-top: 1rem;
+    width: 100%;
+  }
+}
 .main__summary div {
   display: flex;
   justify-content: space-around;
@@ -345,7 +356,8 @@ div.dropLayer {
 }
 @media (max-width: 40rem) {
   .main__sort {
-    justify-content: center;
+    margin-top: 2rem;
+    justify-content: flex-start;
   }
 }
 .main__sort button {
@@ -363,24 +375,39 @@ div.dropLayer {
   font-size: 0.8rem;
   width: 45%;
 }
+@media (max-width: 77.8125rem) {
+  .main__timer {
+    width: 50%;
+  }
+}
+@media (max-width: 62.5rem) {
+  .main__timer {
+    width: 55%;
+  }
+}
 @media (max-width: 40rem) {
   .main__timer {
-    margin: 1rem 0rem;
-    justify-self: center;
-    width: 110%;
-    justify-content: space-around;
+    width: 100%;
+    align-items: end;
+  }
+}
+@media (max-width: 31.875rem) {
+  .main__timer {
+    width: 45vw;
+  }
+}
+@media (max-width: 27.9375rem) {
+  .main__timer {
+    width: 60vw;
+  }
+}
+@media (max-width: 20.4375rem) {
+  .main__timer {
+    width: 65vw;
   }
 }
 .main__timer #time {
   font-weight: bold;
-}
-@media (max-width: 40rem) {
-  .main {
-    width: 100%;
-    padding: 1rem 2rem;
-    height: auto;
-    grid-template-areas: "info amount" "process process" "transactions  transactions" "summary summary" "sort timmer";
-  }
 }
 
 .invalidInput {
@@ -397,14 +424,41 @@ div.dropLayer {
   background-color: white;
 }
 .transaction-row #info {
-  width: 40%;
+  width: 35%;
   font-size: 0.7rem;
   display: flex;
   justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
-@media (max-width: 40rem) {
+.transaction-row #info span#totalTransactions {
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+}
+@media (max-width: 91.5rem) {
+  .transaction-row #info {
+    width: 40%;
+  }
+}
+@media (max-width: 84.1875rem) {
   .transaction-row #info {
     width: 50%;
+  }
+}
+@media (max-width: 72.1875rem) {
+  .transaction-row #info {
+    width: 60%;
+  }
+}
+@media (max-width: 65.1875rem) {
+  .transaction-row #info {
+    width: 65%;
+    font-size: 0.6rem;
+  }
+}
+@media (max-width: 45.875rem) {
+  .transaction-row #info {
+    width: 70%;
   }
 }
 .transaction-row #totalTransactions {

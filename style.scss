@@ -143,7 +143,6 @@ div.dropLayer
     }
     @media (max-width:40rem)
     {
-        // visibility: hidden;
         display: none;
         flex-direction: column;
         background-color: rgba(255, 255, 255, 0.885);
@@ -173,22 +172,48 @@ div.dropLayer
                         "transactions transactions transactions  process"
                         "summary . sort timmer";
 
+    @media(max-width:62.5rem)
+    {
+        width:90%;
+    }
+
+    @media(max-width:40rem)
+    {
+        
+        grid-template-areas: " info amount"
+        "process process"
+        "transactions  transactions"
+        "summary summary "
+        "sort timmer";
+        width:70%;
+
+        
+    }
+    @media(max-width:28rem)
+    {
+        width:90%;
+        
+    }
+    
+
 
     &__infoAndDate
     {
         grid-area:info;
 
         @media(max-width:40rem)
-        {
-            margin:0.5rem 0rem;
+        {   
+            margin:2rem 0rem;
+            width:150%;
+
 
         }
 
         h2
         {
-            @media(max-width:40rem)
+            @media (max-width:48.5625rem)
             {
-                font-size: 1rem;
+                font-size:1rem;    
             }
         }
     }
@@ -206,6 +231,11 @@ div.dropLayer
             content:" $";
         }
 
+        @media (max-width:48.5625rem)
+        {
+            font-size: 2rem;    
+        }
+
         @media(max-width:40rem)
         {
             font-size: 1.5rem;
@@ -220,11 +250,12 @@ div.dropLayer
         overflow: scroll;
         height:70vh;
         border-radius: 10px;
+        padding-top:2rem;
 
-        @media (max-width:40rem)
-        {
-            margin: 1rem 0rem;    
-        }
+        // @media (max-width:40rem)
+        // {
+        //     margin: 1rem 0rem;    
+        // }
        
     }
 
@@ -233,6 +264,7 @@ div.dropLayer
         display: flex;
         justify-content: space-around;
         align-items: center;
+
 
     }
     &__process
@@ -243,25 +275,24 @@ div.dropLayer
         justify-content: space-around;
         align-items: center;
         height:70vh;
-        margin:1rem 0rem;
         @media(max-width:40rem)
         {
-            justify-content: space-around;
+            margin-top: 2rem;
         }
         &--process
         {
             width:90%;
             display:flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: start;
+            justify-content: space-around;
+            align-items: center;
             height:21vh;
             border-radius:10px;
-
+            padding:1.5rem;
             @media(max-width:40rem)
             {
-                height:20vh;
-                width:100%;
+                  width:100%;
+                  
             }
             & input
             {
@@ -302,16 +333,15 @@ div.dropLayer
             & h4
             {
                 font-size:1.1rem;
-                margin-left:2.4rem;
-
+                width:85%;
             }
 
             & .inputs
             {
                 display: flex;
                 justify-content: space-around;
-                margin-left:2.4rem;
-                margin-top: 1rem;
+                // margin-left:2.4rem;
+                // margin-top: 1rem;
 
                
             }
@@ -320,7 +350,6 @@ div.dropLayer
 
                 width:100%;
                 font-size:0.8rem;
-                margin-top:0.5rem;
                 display: flex;
                 justify-content: space-around;
                 text-align: center;
@@ -334,7 +363,6 @@ div.dropLayer
                 #secondSpan
                 {
                     text-align: left;
-                    padding-left:2.3rem;
                 }
 
             }
@@ -345,28 +373,16 @@ div.dropLayer
         }
         
         &--request
-        {
-            & input
-            {
-                width:65%;
-            }
-            
-            & button
-            {
-                width:25%;
-            }
-
+        {  
             & .info
             {
-                display:block;
-                width:55%;
-                text-align: center;
-                align-self: start;
+                width:60%;
+                align-self: flex-start;
             }
             & .inputs
             {
-                justify-content: space-between;
-                width:60%;
+                width:100%;
+                justify-content: space-around;
             }
         }
 
@@ -417,6 +433,11 @@ div.dropLayer
         display: flex;
         justify-content: space-around;
         align-items: baseline;
+        @media(max-width:40rem)
+        {   
+            margin-top:1rem;
+            width:100%;
+        }
         & div
         {
             display: flex;
@@ -451,7 +472,8 @@ div.dropLayer
         align-items: center;    
         @media(max-width:40rem)
         {
-            justify-content: center;
+            margin-top:2rem;
+            justify-content: flex-start;
         }
         & button
         {
@@ -472,37 +494,57 @@ div.dropLayer
         align-items: center;
         font-size:0.8rem;
         width:45%;
-       
+       @media(max-width:77.8125rem)
+       {
+        width:50%;
+       }
+
+       @media(max-width:62.5rem)
+       {
+        width:55%;
+       }
         @media(max-width:40rem)
         {   
-            margin:1rem 0rem;
-            justify-self: center;
-            width:110%;
-            justify-content: space-around;
+            width:100%;
+            align-items:end;
+            
         }
+
+        @media(max-width:31.875rem)
+        {
+            width:45vw;
+        }
+
+        @media(max-width:27.9375rem)
+        {
+            width:60vw;
+        }
+
+        @media(max-width:20.4375rem)
+        {
+            width:65vw;
+        }
+
         & #time
         {
             font-weight: bold;
+            
         }
 
     }
    
-    @media(max-width:40rem)
-    {
-        width:100%;
-        padding:1rem 2rem;
-        height: auto;
+    // @media(max-width:40rem)
+    // {
+    //     width:100%;
+    //     padding:1rem 2rem;
+    //     height: auto;
 
-        // grid-template-areas: "info info amount  amount"
-        // "transactions transactions transactions  process"
-        // "summary . sort timmer";
-
-        grid-template-areas: "info amount"
-        "process process"
-        "transactions  transactions"
-        "summary summary"
-        "sort timmer";
-    }
+    //     grid-template-areas: "info amount"
+    //     "process process"
+    //     "transactions  transactions"
+    //     "summary summary"
+    //     "sort timmer";
+    // }
     
 }
 
@@ -529,14 +571,40 @@ div.dropLayer
     }
     & #info
     {
-        width:40%;
+        width:35%;
         font-size: 0.7rem;
         display: flex;
         justify-content: space-between;
+        display:flex;
+        justify-content: space-between;
 
-        @media(max-width:40rem)
+        span#totalTransactions 
+        {
+            min-width: fit-content;
+        }
+
+        @media(max-width:91.5rem)
+        {
+            width:40%;
+        }
+        @media(max-width:84.1875rem)
         {
             width:50%;
+        }
+        @media(max-width:72.1875rem)
+        {
+            width:60%;
+        }
+
+        @media(max-width:65.1875rem)
+        {
+            width:65%;
+            font-size:0.6rem;
+        }
+
+        @media(max-width:45.875rem)
+        {
+            width:70%;
         }
     }
     & #totalTransactions

@@ -51,11 +51,11 @@
         <div class="main__process">
             <div class="main__process--transfer main__process--process">
                 <h4 class="main__process--element">Transfer money</h4>
-                <div class="inputs main__process--element">
+                <form class="inputs main__process--element" action="" method="post">
                     <input type="text" class="text" placeholder="user" >
                     <input type="text" class="number" placeholder="0.0">
-                    <button type="button">&rarr;</button>
-                </div>
+                    <button type="submit">&rarr;</button>
+                </form>
                 <div class="info main__process--element">
                     <span id="firstSpan">Transfer to</span>
                     <span id="secondSpan">Amount</span>
@@ -63,20 +63,20 @@
             </div>
             <div class="main__process--request main__process--process">
                 <h4 class="main__process--element">Request Loan</h4>
-                <div class="inputs main__process--element">
+                <form class="inputs main__process--element" method="post" action="">
                     <input type="text" class="number" placeholder="0.0" >
-                    <button type="button">&rarr;</button>
-                </div>
+                    <button type="submit">&rarr;</button>
+                </form>
                 <span class="info main__process--element">Amount</span>
                 
             </div>
             <div class="main__process--close main__process--process">
                 <h4 class="main__process--element">Close account </h4>
-                <div class="inputs main__process--element">
+                <form class="inputs main__process--element" method="post" action="">
                     <input type="text" class="text" placeholder="user">
                     <input type="password" class="number" placeholder="PIN">
-                    <button type="button">&rarr;</button>
-                </div>
+                    <button type="submit">&rarr;</button>
+                </form>
                 <div class="info main__process--element">
                     <span id="firstSpan">Confirm user</span>
                     <span id="secondSpan">Confirm pin</span>

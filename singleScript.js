@@ -1,3 +1,4 @@
+//users array
 const users = 
 [
     {"userName":"ankit",
@@ -77,24 +78,23 @@ const users =
    }
 ];
 
-const loginBtn = document.querySelector("#submit");
-const userEntered = document.querySelector("#user");
-const pinEntered = document.querySelector("#pin");
-const main = document.querySelector("main");
-const balance = document.querySelector(".main__currentBalance");
-const sortButton = document.querySelector(".main__sort button");
+const btnLogin = document.querySelector("#submit");
+const inputUser = document.querySelector("#user");
+const inputPin = document.querySelector("#pin");
+const containerMain = document.querySelector("main");
+const labelBalance = document.querySelector(".main__currentBalance");
+const btnSort = document.querySelector(".main__sort button");
 let transactions;
-main.style.opacity="0";
-let userName;
+containerMain.style.opacity="0";
+// let userName;
 let currUser;
-
-const inAmount = document.querySelector(".main__summary #in");
-const outAmount = document.querySelector(".main__summary #out");
-
-let inValue = 0;
-let outValue=0;
+let countDownInterval;
+const labelInAmount = document.querySelector(".main__summary #in");
+const labelOutAmount = document.querySelector(".main__summary #out");
 
 
+//Cookie not required here as we are using a single page
+/*
 function setCookie(data,days)
 {
     const date = new Date();
@@ -103,11 +103,13 @@ function setCookie(data,days)
     const expDate = ";expires="+date.toUTCString();
     document.cookie = "name="+data+expDate;
 }
+*/
 
+/*
 function searchForUser(user)
 {   
 
-    if(user.userName === userEntered.value.toLowerCase() && +pinEntered.value===user.password)
+    if(user.userName === inputUser.value.toLowerCase() && +inputPin.value===user.password)
     {   
         setCookie(user.userName,1);
         return user;
@@ -115,53 +117,51 @@ function searchForUser(user)
 
     
 }
+*/
 
-function noUserFound(user)
-{
+function checkUser()
+{   
+    let user = users.find(user=>user.userName===inputUser.value && user.password=== +inputPin.value);
+
     if(!user)
     {     
         alert("Invalid user or password");
+        return;
     }
     else
     {   
-        userName =  document.cookie.split("=")[1];
-        main.style.opacity="100";
-        document.querySelector(".header h4").textContent="Welcome " + userName;
-        currUser = users.find(user=>userName===user.userName);
-        balance.textContent=currUser.currentBalance;
-        transactions = currUser.transactions;
-        userEntered.value="";
-        pinEntered.value="";
+        currUser = user;
+        containerMain.style.opacity="100";
+        document.querySelector(".header h4").textContent="Welcome " + currUser.userName ;
+        labelBalance.textContent=currUser.currentBalance;
+        transactions = user.transactions;
+        inputUser.value="";
+        inputPin.value="";
 
-        for(let transaction of transactions)
-        {
-            if(transaction.amount>0)
-            {
-                inValue = inValue + transaction.amount;
-            }
-            else
-            {
-             outValue = outValue + transaction.amount;
 
-            }   
-        }
+        // Display total in amount
+        labelInAmount.textContent = 
+        transactions.reduce(((accu,tran)=>tran.amount>0? accu + tran.amount : accu), 0); + " $";
 
-        inAmount.textContent = inValue + " $";
-        outAmount.textContent = (-1 * outValue) + " $";
+        //Display total out amount
+        labelOutAmount.textContent = -1 * transactions.reduce((accu,tran)=>tran.amount < 0 ? accu + tran.amount : accu,0) + " $";
 
         startCountDown();
+        showTransactions();
+        
 
-        // Code for responsiveness, as to hide the menu after authentication is successful.
         
     }
 
 }
 
-loginBtn.addEventListener("click",function()
-{   
-    const user = users.find(searchForUser);
-    noUserFound(user);
-    showTransactions();
+btnLogin.addEventListener("click",function()
+{    
+    //Not required, as we do not use cookies here.
+    //const user = users.find(searchForUser);
+
+    checkUser();
+    
 
     
 });
@@ -365,8 +365,9 @@ for(let i = 0; i<3; i++)
 
 // Working on buttons :
 //button transfer
-processButtons[0].addEventListener("click",function()
-{
+processButtons[0].addEventListener("click",function(e)
+{   
+    e.preventDefault();
     let nameFromUser = textFields[0].value;
     if(currUser.currentBalance < +numericFields[0].value)
     {
@@ -397,9 +398,10 @@ processButtons[0].addEventListener("click",function()
             textFields[0].value="";
             numericFields[0].value="";
                 
-            balance.textContent = currUser.currentBalance;
+            labelBalance.textContent = currUser.currentBalance;
             disableButton(processButtons[0]);
 
+            startCountDown();
             showTransactions();
             return;
         }
@@ -411,18 +413,21 @@ processButtons[0].addEventListener("click",function()
 });
 
 //button loan
-processButtons[1].addEventListener("click",function()
+processButtons[1].addEventListener("click",function(e)
 {   
+    e.preventDefault();
+
     if(currUser.currentBalance*0.1 >= +numericFields[1].value)
     {
         alert("Loan APPROVED.");
         currUser.currentBalance = currUser.currentBalance + 
         +numericFields[1].value;
-        balance.textContent = currUser.currentBalance;
+        labelBalance.textContent = currUser.currentBalance;
         transactions.push({amount:+numericFields[1].value,time:new Date()});
         showTransactions();
         numericFields[1].value="";
         disableButton(processButtons[1]);
+        startCountDown();
 
         return;
     }
@@ -433,9 +438,9 @@ processButtons[1].addEventListener("click",function()
 
 //close account
 //deleting the currently logged in user 
-processButtons[2].addEventListener("click",function()
+processButtons[2].addEventListener("click",function(e)
 {
-
+    e.preventDefault();
     let userFromTextField = textFields[1].value;
     let passwordFromTextField = +numericFields[2].value;
     
@@ -448,30 +453,36 @@ processButtons[2].addEventListener("click",function()
                 textFields[1].value="";
                 numericFields[2].value="";
                 disableButton(processButtons[2]);
-                main.style.opacity=0;
+                containerMain.style.opacity=0;
                 document.querySelector(".header h4").textContent="Log in to get started";
             }
             else
             {
                 alert(`Password does not match for ${currUser.userName}.`)
+                startCountDown();
+
             }
-            
+
             return;
 
         }
 
     alert(`user name does not match.`);
+    startCountDown();
+
 });
 
 
 
-sortButton.addEventListener("click", function()
+btnSort.addEventListener("click", function()
 {
     // transactions.sort((a,b)=> a.amount - b.amount);
    let firstAmount = transactions[0].amount;
     let LastAmount = transactions[transactions.length-1].amount;
    transactions.sort(function(a,b)
     {
+            startCountDown();
+
         if(firstAmount>=LastAmount)
         {
             return (a.amount - b.amount);
@@ -482,6 +493,7 @@ sortButton.addEventListener("click", function()
             return (b.amount - a.amount);
 
         }
+
     });
 
     console.log( "First " + transactions[0].amount);
@@ -497,13 +509,17 @@ function updateCountDownDisplay(minutes,seconds)
 
 function startCountDown()
 {
+    if(countDownInterval)
+    {
+        clearInterval(countDownInterval);
+    }
     let minutes = 10;
     let seconds = 0;
 
     updateCountDownDisplay(minutes,seconds);
 
 
-    const countDownInterval = setInterval(function()
+    countDownInterval = setInterval(function()
     {
         seconds--;
         
@@ -518,8 +534,8 @@ function startCountDown()
 
         if(minutes===0 && seconds===0)
         {   
-            main.style.opacity=0;
-            main.style.transition="all 1s"
+            containerMain.style.opacity=0;
+            containerMain.style.transition="all 1s"
             document.querySelector(".header h4").textContent="Log in to get started";
             clearInterval(countDownInterval);
         }
